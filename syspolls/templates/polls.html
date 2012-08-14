@@ -1,0 +1,30 @@
+{% load i18n %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Опрос</title>
+</head>
+<body>
+{% if user.is_authenticated %}
+<form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+<p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+    {% for qust in quests_v %}
+        <ul>
+        <li>
+            <input type = "text" style="border:10px; background: 000000; width: 800px;" name="qust_{{ qust.id }}" value = "{{ qust.title_quest }}" readonly="readonly">
+            <select name="ans_{{ qust.id }}">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </li>
+        </ul>
+    {% endfor %}
+<input type="submit" value="Send">
+{% endif %}
+</body>
+</html>

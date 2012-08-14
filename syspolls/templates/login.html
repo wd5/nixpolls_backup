@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Knowledge</title>
+<link href="/media/css/loginmodule.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<center><img src="/media/image/nixlogo.png" width="165" height="62" border="0" alt="Support: clients and servers DB" hspace="10" />
+<p align="center">&nbsp;</p>
+{% block content %}
+
+    {% if form.errors %}
+        <p align="center" style="color: red;">Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    <form method="post" action="{% url login %}">
+        {% csrf_token %}
+        <table width="300" border="0" align="center" cellpadding="2" cellspacing="0">
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+
+        <p align="center"><input type="submit" value="login" /></p>
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <link href="/media/css/loginmodule.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    {% for grp in groups_v %}
+        <ul>
+            <li><a style="font-size: 16px; font-family: Serif;" href="/polls/{{ grp.title }}/">{{ grp.title }}</a></li>
+        </ul>
+    {% endfor %}
+    {% for ver in version_v %}
+        <div class="vers">{{ ver.title_version }}</div>
+    {% endfor %}
+
+</body>
+</html>
